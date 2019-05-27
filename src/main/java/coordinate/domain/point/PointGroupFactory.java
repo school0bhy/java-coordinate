@@ -5,15 +5,16 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class PointGroupFactory {
     private static final String ORDERED_PAIRS_SEPERATOR = "-";
     private static final Pattern orderedPairPattern = Pattern.compile("\\((.*),(.*)\\)");
 
     public static PointGroup create(String orderedPairs) {
-        List<Point> points = new ArrayList<>();
-        Arrays.asList(orderedPairs.split(ORDERED_PAIRS_SEPERATOR))
-                .forEach(x -> points.add(convertCoordinate(x)));
+        List<Point> points = Arrays.asList(orderedPairs.split(ORDERED_PAIRS_SEPERATOR)).stream()
+                        .map(x -> convertCoordinate(x))
+                        .collect(Collectors.toList());
         return new PointGroup(points);
     }
 

@@ -17,14 +17,21 @@ public class Triangle extends Figure {
 
     @Override
     void validatePoints(PointGroup points) {
-        List<Double> distances = getAllLength(points);
-        Collections.sort(distances);
-        distances = distances.stream().map(x -> Math.sqrt(x)).collect(Collectors.toList());
-        if (BigDecimal.valueOf(distances.get(2)).compareTo(BigDecimal.valueOf(distances.get(1) + distances.get(0))) == 0) {
-            throw new IllegalArgumentException("일직선 상 3개의 점은 허용하지 않습니다.");
+        if (!isLargestSmallerThanRemainingSum(points)){
+           throw new IllegalArgumentException("일직선 상 3개의 점은 허용하지 않습니다.");
         }
     }
 
+    private boolean isLargestSmallerThanRemainingSum(PointGroup points) {
+        List<Double> lengths = getAllLength(points);
+        Collections.sort(lengths);
+        lengths = lengths.stream()
+                .map(x -> Math.sqrt(x))
+                .collect(Collectors.toList());
+
+        return BigDecimal.valueOf(lengths.get(2))
+                .compareTo(BigDecimal.valueOf(lengths.get(1) + lengths.get(0))) < 0;
+    }
     private List<Double> getAllLength(PointGroup points) {
         return Arrays.asList(
                 points.getSquaredDistanceOf(0, 1),
