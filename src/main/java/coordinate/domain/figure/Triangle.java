@@ -17,8 +17,8 @@ public class Triangle extends Figure {
 
     @Override
     void validatePoints(PointGroup points) {
-        if (!isLargestSmallerThanRemainingSum(points)){
-           throw new IllegalArgumentException("일직선 상 3개의 점은 허용하지 않습니다.");
+        if (!isLargestSmallerThanRemainingSum(points)) {
+            throw new IllegalArgumentException("일직선 상 3개의 점은 허용하지 않습니다.");
         }
     }
 
@@ -32,6 +32,7 @@ public class Triangle extends Figure {
         return BigDecimal.valueOf(lengths.get(2))
                 .compareTo(BigDecimal.valueOf(lengths.get(1) + lengths.get(0))) < 0;
     }
+
     private List<Double> getAllLength(PointGroup points) {
         return Arrays.asList(
                 points.getSquaredDistanceOf(0, 1),

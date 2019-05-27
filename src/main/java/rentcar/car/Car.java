@@ -16,7 +16,7 @@ public abstract class Car implements Fuelable {
 
     private void validateTripDistance(int tripDistance) {
         if (tripDistance < MIN_TRIP_DISTANCE) {
-            throw new IllegalArgumentException(MIN_TRIP_DISTANCE +" 이상의 이동거리가 필요합니다.");
+            throw new IllegalArgumentException(MIN_TRIP_DISTANCE + " 이상의 이동거리가 필요합니다.");
         }
     }
 

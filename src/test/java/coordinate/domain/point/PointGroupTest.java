@@ -23,6 +23,7 @@ class PointGroupTest {
 
         this.points = new PointGroup(points);
     }
+
     @Test
     void size() {
         assertThat(points.size()).isEqualTo(4);
@@ -36,11 +37,11 @@ class PointGroupTest {
 
     @Test
     void have1() {
-        assertThat(points.have(Point.create(1,1))).isTrue();
+        assertThat(points.have(Point.create(1, 1))).isTrue();
     }
 
     @Test
     void have2() {
-        assertThat(points.have(Point.create(0,0))).isFalse();
+        assertThat(points.have(Point.create(0, 0))).isFalse();
     }
 }

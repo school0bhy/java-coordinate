@@ -13,8 +13,8 @@ public class PointGroupFactory {
 
     public static PointGroup create(String orderedPairs) {
         List<Point> points = Arrays.asList(orderedPairs.split(ORDERED_PAIRS_SEPERATOR)).stream()
-                        .map(x -> convertCoordinate(x))
-                        .collect(Collectors.toList());
+                .map(x -> convertCoordinate(x))
+                .collect(Collectors.toList());
         return new PointGroup(points);
     }
 
